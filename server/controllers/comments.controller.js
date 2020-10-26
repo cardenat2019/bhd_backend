@@ -18,7 +18,7 @@ exports.getList = (request, response) => {
         response.status(200).send({
             ok: true,
             message: 'Comentarios encontrados',
-            result: result
+            result
         });
     }).catch(error=>{
         response.status(500).send({
@@ -49,13 +49,12 @@ exports.getOne = (request, response) => {
           mapToModel: false
         }            
     ).then(record => {
-        console.log(record);
         if(record!==null){
-            let result = JSON.parse(record.result);
+            let result = JSON.parse(record[0].result);
             response.status(200).send({
                 ok: true,
                 message: 'Comentario encontrado',
-                result: result
+                result
             });
         }else
             response.status(400).send({
