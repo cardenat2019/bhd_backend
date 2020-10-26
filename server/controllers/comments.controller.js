@@ -79,7 +79,7 @@ exports.create = (request, response) => {
            email, 
            website
           } = request.body;
-          
+
     Comments.create({
             content, 
             name, 
@@ -93,6 +93,7 @@ exports.create = (request, response) => {
                 result: record
             })
         }).catch(err=>{
+            console.log(err);
             return response.status(500).json({
             ok: false,
             message: 'Error al crear comentario',
